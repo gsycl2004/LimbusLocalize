@@ -51,30 +51,16 @@ namespace LimbusLocalize
         private static bool set_fontMaterial(TextMeshProUGUI __instance, Material value)
         {
             value = __instance.font.material;
-            if (__instance.fontSize == 50f)
+            __instance.fontSize = __instance.fontSize switch
             {
-                __instance.fontSize = 35f;
-            }
-            if (__instance.fontSize == 60f)
-            {
-                __instance.fontSize = 32f;
-            }
-            if (__instance.fontSize == 70f)
-            {
-                __instance.fontSize = 42f;
-            }
-            if (__instance.fontSize == 80f)
-            {
-                __instance.fontSize = 56f;
-            }
-            if (__instance.fontSize == 100f)
-            {
-                __instance.fontSize = 53f;
-            }
-            if (__instance.fontSize == 160f)
-            {
-                __instance.fontSize = 115f;
-            }
+                50f => 35f,
+                60f => 32f,
+                70f => 42f,
+                80f => 56f,
+                100f => 53f,
+                160f => 115f,
+                _ => __instance.fontSize
+            };
             if (__instance.m_sharedMaterial != null && __instance.m_sharedMaterial.GetInstanceID() == value.GetInstanceID())
             {
                 return false;
